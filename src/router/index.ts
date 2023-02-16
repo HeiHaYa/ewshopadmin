@@ -21,4 +21,16 @@ const router = createRouter({
     routes, // `routes: routes` 的缩写
 })
 
+router.beforeEach((to, from, next) => {
+    if (to.name != "login") {
+        // 如果不是登录页面，判断是否登录
+        if (!localStorage.getItem("token")) {
+            next({
+                path: "/login",
+            });
+        }
+    }
+    next();
+});
+
 export default router;
