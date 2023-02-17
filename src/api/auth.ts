@@ -16,3 +16,11 @@ export function user() {
         method: 'GET',
     });
 }
+
+// 用户退出接口
+export function logout() {
+    return request({
+        url: "/api/auth/logout",
+        method: 'POST',
+    });
+}

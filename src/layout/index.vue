@@ -1,7 +1,7 @@
 <template>
   <n-layout has-sider position="absolute">
     <n-layout-sider content-style="background-color:#001529" class=" h-screen ">
-      <!--            <page-sider></page-sider>-->
+                  <page-sider></page-sider>
     </n-layout-sider>
     <n-layout>
       <n-layout-header>
