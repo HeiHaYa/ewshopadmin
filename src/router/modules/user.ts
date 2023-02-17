@@ -1,8 +1,9 @@
 import {RouteRecordRaw} from "vue-router";
 import Layout from "@/layout/index.vue";
-import { renderIcon } from "@/utils";
-import {Browsers} from "@vicons/ionicons5";
-const routeName = "dashboard";
+import {Body} from "@vicons/ionicons5";
+import {renderIcon} from "@/utils";
+
+const routeName = "users";
 /**
  * @param name 路由名称, 必须设置,且不能重名
  * @param meta 路由元信息（路由附带扩展信息）
@@ -15,24 +16,24 @@ const routeName = "dashboard";
 
 const routes: Array<RouteRecordRaw> = [
     {
-        path: "/dashboard",
+        path: "/users",
         name: routeName,
         component: Layout,
-        redirect: "/dashboard/console",
+        redirect: "/users/list",
         meta: {
-            title: "首页统计",
-            icon: "",
+            title: "用户管理",
+            icon: renderIcon(Body),
             sort: 0,
         },
         children: [
             {
-                path: "console",
-                name: `${routeName}_console`,
+                path: "list",
+                name: `${routeName}_list`,
                 meta: {
-                    title: "主控台",
-                    icon: renderIcon(Browsers),
+                    title: "用户列表",
+                    icon: "",
                 },
-                component: () => import("@/views/dashboard/Dashboard.vue"),
+                component: () => import("@/views/user/index.vue"),
             }
         ]
     }
