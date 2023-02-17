@@ -25,7 +25,7 @@ export const useUserStore = defineStore({
     //1.store 的名称
     id: 'app-user',
     state: (): IUserState => ({
-        token: localStorage.getItem('token') || '',
+        token: localStorage.getItem("token") || "",
         username: '',
         avatar_url: '',
         permissions: [],
@@ -39,10 +39,10 @@ export const useUserStore = defineStore({
             return this.avatar_url;
         },
         getUserName(): string{
-            return this.getUserName;
+            return this.username;
         },
         getPermissions(): string[]{
-            return this.getPermissions;
+            return this.permissions;
         }
 
     },
@@ -73,7 +73,7 @@ export const useUserStore = defineStore({
                 if (response.access_token) {
                     this.setToken(response.access_token);
                     // 登录之后，token已经拿到了，然后getUser获取调用,
-                    //return await this.getUser();
+                    return await this.getUser();
                 }
             } catch (error) {
                 // console.log(error);

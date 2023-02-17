@@ -54,9 +54,11 @@ import { reactive, ref } from "vue";
 import { PersonOutline, LockClosedOutline} from "@vicons/ionicons5";
 import {useUserStore} from "@/store/user";
 import {useRouter} from "vue-router";
-// import { useMessage } from 'naive-ui';
-// const message = useMessage();
-// (<any>window).$message = useMessage();
+import { useMessage } from 'naive-ui';
+
+
+const message = useMessage();
+(<any>window).$message = useMessage();
 
 const formRef = ref();
 const loading = ref(false);
@@ -101,17 +103,17 @@ const handleSubmit = () => {
       };
       try {
         // 执行登录操作
-        console.log(params)
+        // console.log(params)
         // 执行登录操作
         userStore.login(params).then(_res => {      // res是userStore里面返回的数据
           // 关闭窗口
           // Comment(res);
-          // message.success("登陆成功");
+          message.success("登陆成功");
           loading.value = false;
           // 弹出提示  登陆成功
           // 跳转回首页
-          // router.push({name: "dashboard"});
-          console.log(_res)
+          router.push({name: "dashboard"});
+          // console.log(_res)
         }).catch(() => {
           // console.log(err);
           loading.value = false;
